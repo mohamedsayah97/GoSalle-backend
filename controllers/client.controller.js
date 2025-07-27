@@ -1,6 +1,6 @@
 import clientRepo from "../repository/client.repo.js";
 import {generateToken} from "../utils/jwt.utils.js";
-import { comparePassword } from "../utils/password.util.js";
+import { comparePassword } from "../utils/password.utils.js";
 
 const clientController = {
     async register(req, res) {

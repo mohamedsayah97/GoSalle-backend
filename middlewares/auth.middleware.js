@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import clientRepo from "../repository/client.repo";
+import clientRepo from "../repository/client.repo.js";
 
 export const authorizer = async (req, res, next) => {
   try {
