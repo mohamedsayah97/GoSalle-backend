@@ -3,15 +3,23 @@ import { z } from "zod";
 export const createClientSchema = z.object({
   body: z
     .object({
-      first_name: z.string(),
-      last_name: z.string(),
+      nom: z.string(),
+      prenom: z.string(),
       email: z.string()
-        .min(5, "Email too short")
-        .max(50, "Email too long"),
+        .min(5, "Email trop court")
+        .max(50, "Email trop long"),
       password: z
         .string()
-        .min(5, "password too short")
-        .max(50, "password too long"),
+        .min(5, "Mot de passe trop court")
+        .max(50, "Mot de passe trop long"),
+      confirmPassword: z.string(),
+      ville: z.string(),
+      dateNaissance: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Date de naissance invalide"),
+      genre: z.string(),
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+      message: "Les mots de passe ne correspondent pas",
+      path: ["confirmPassword"],
     })
     .strict(),
 });

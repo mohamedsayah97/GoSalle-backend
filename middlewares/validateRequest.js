@@ -7,6 +7,7 @@ export const validateRequest = (schema) => (req, res, next) => {
     });
     next();
   } catch (error) {
+    console.error('Erreur de validation Zod :', error);
     res.status(400).send(error.errors);
   }
 };

@@ -18,6 +18,12 @@ const clientSchema = new Schema({
     trim: true,
     lowercase: true,
   },
+  password: {
+    type: String,
+    required: true,
+    minlength: 6,
+  },
+
   genre: {
     type: String,
     enum: ['Homme', 'Femme'],

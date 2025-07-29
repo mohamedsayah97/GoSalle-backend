@@ -11,8 +11,9 @@ const clientController = {
                 return res.status(400).json({ message: "Client already exists" });
             }
             const newClient = await clientRepo.insert(data);
-            return res.status(201).json({ data: newUser, message: "Client registered successfully" });
+            return res.status(201).json({ data: newClient, message: "Client registered successfully" });
         } catch (error) {
+           console.error('Erreur catchée :', error);
             return res.status(500).json({ message: "Internal server error", error: error.message });
         }
 
