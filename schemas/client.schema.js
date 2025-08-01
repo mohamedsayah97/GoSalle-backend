@@ -3,8 +3,8 @@ import { z } from "zod";
 export const createClientSchema = z.object({
   body: z
     .object({
-      nom: z.string(),
-      prenom: z.string(),
+      nom: z.string().min(1, "Le nom est requis"),
+      prenom: z.string().min(1, "Le prénom est requis"),
       email: z.string()
         .min(5, "Email trop court")
         .max(50, "Email trop long"),
@@ -13,9 +13,9 @@ export const createClientSchema = z.object({
         .min(5, "Mot de passe trop court")
         .max(50, "Mot de passe trop long"),
       confirmPassword: z.string(),
-      ville: z.string(),
+      ville: z.string().min(1, "La ville est requise"),
       dateNaissance: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Date de naissance invalide"),
-      genre: z.string(),
+      genre: z.string().min(1, "Le genre est requis"),
     })
     .refine((data) => data.password === data.confirmPassword, {
       message: "Les mots de passe ne correspondent pas",
@@ -53,7 +53,7 @@ export const updatePassword = z.object({
 export const loginSchema = z.object({
   body: z
     .object({
-      email: z.string().email(),
+      email: z.string(),
       password: z
         .string()
         .min(5, "password too short")

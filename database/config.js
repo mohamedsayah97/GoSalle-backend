@@ -5,6 +5,7 @@ const config = async () => {
     await mongoose.connect(process.env.MONGODB_URI);
     console.log("Base de données connectée avec succès");
   } catch (error) {
+    //debbuging
     console.error("Erreur de connexion à la base de données :", error.message);
   }
 };
