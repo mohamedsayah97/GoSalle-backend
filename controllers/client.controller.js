@@ -48,7 +48,7 @@ const clientController = {
     async list(req, res) {
     try {
       const client = await clientRepo.find();
-      return res.status(200).json({ data: clients, message: "Clients retrieved successfully" });
+      return res.status(200).json({ data: client, message: "Clients retrieved successfully" });
     } catch (error) {
       return res.status(500).json({ message: error.message });
     }
